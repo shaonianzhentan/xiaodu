@@ -1,10 +1,10 @@
 {
     "domain": "xiaodu",
     "name": "\u5C0F\u5EA6\u5C0F\u5EA6",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "config_flow": true,
     "documentation": "https://github.com/shaonianzhentan/xiaodu",
     "dependencies": [],
     "codeowners": ["@shaonianzhentan"],
-    "quality_scale": "internal"
+    "quality_scale": "cloud_polling"
 }

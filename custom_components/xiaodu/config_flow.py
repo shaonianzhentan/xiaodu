@@ -48,7 +48,8 @@ class OptionsFlowHandler(OptionsFlow):
             options = self.config_entry.options
             errors = {}
             DATA_SCHEMA = vol.Schema({
-                vol.Required("apiKey", default=options.get('apiKey')): str,
+                vol.Optional("apiKey", default=options.get('apiKey', '')): str,
+                vol.Optional("debug", default=options.get('debug', False)): bool,
             })
             return self.async_show_form(step_id="user", data_schema=DATA_SCHEMA, errors=errors)
         # 选项更新

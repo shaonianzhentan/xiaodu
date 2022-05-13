@@ -1,5 +1,4 @@
-import json
-import logging
+import json, logging, time
 from homeassistant.components.http import HomeAssistantView
 
 from .const import DOMAIN, XIAODU_API
@@ -16,7 +15,12 @@ class XiaoduView(HomeAssistantView):
     async def post(self, request):
         hass = request.app["hass"]
         data = await request.json()
-        _LOGGER.debug("======= 小度API接口信息：%s", data)
+        options = hass.data[DOMAIN]
+        if options.get('debug', False) == True:
+            await hass.services.async_call('persistent_notification', 'create', {
+                'title': '接收信息',
+                'message': json.dumps(data)
+            })
         header = data['header']
         payload = data['payload']
         name = header['name']
@@ -25,7 +29,7 @@ class XiaoduView(HomeAssistantView):
         token = await hass.auth.async_validate_access_token(accessToken)
         # 进行自定义服务验证
         if token is None:
-            apiKey = hass.data[DOMAIN].get('apiKey', '')
+            apiKey = options.get('apiKey', '')
             # 判断是否定义apiKey
             if apiKey != '' and accessToken == f'apiKey{apiKey}':
                 token = accessToken
@@ -56,6 +60,10 @@ class XiaoduView(HomeAssistantView):
         if 'openUid' in payload:
             result['openUid'] = payload['openUid']
         response = {'header': header, 'payload': result}
-
-        _LOGGER.debug("Respnose: %s", response)    
+        
+        if options.get('debug', False) == True:
+            await hass.services.async_call('persistent_notification', 'create', {
+                'title': '发送信息',
+                'message': json.dumps(response)
+            })
         return self.json(response)

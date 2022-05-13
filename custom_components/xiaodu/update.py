@@ -33,7 +33,7 @@ class EntityUpdate(UpdateEntity):
         self.hass = hass
         self._attr_unique_id = unique_id
         self._attr_release_url = manifest.documentation
-        self._attr_in_progress = False
+        self._in_progress = False
         
     @property
     def in_progress(self) -> bool:
@@ -44,7 +44,7 @@ class EntityUpdate(UpdateEntity):
         return manifest.version
 
     async def async_install(self, version: str, backup: bool):
-        self._attr_in_progress = True
+        self._in_progress = True
         sh_file = self.hass.config.path(f'{self._attr_name}.sh')
         # download file of bash script
         url = 'https://gitee.com/shaonianzhentan/updater/raw/main/bash/install.sh'
