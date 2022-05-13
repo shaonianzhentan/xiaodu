@@ -13,9 +13,9 @@
     "options": {
         "step": {
             "user": {
-                "description": "没有HTTPS域名，可配置以下密钥通过第三方服务中转",
+                "description": "没有HTTPS域名，可配置密钥通过第三方服务中转",
                 "data": {
-                    "apiKey": "服务密钥",
+                    "apiKey": "ClientSecret",
                     "debug": "调试模式"
                 }
             }
