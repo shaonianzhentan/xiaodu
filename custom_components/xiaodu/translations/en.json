@@ -1,0 +1,24 @@
+{
+    "title": "小度小度",
+    "config": {
+        "step": {
+            "user": {
+                "description": "小度音箱云云对接",
+                "data": {}
+            }
+        },
+        "error": {},
+        "abort": {}
+    },
+    "options": {
+        "step": {
+            "user": {
+                "description": "没有HTTPS域名，可配置以下密钥通过第三方服务中转",
+                "data": {
+                    "apiKey": "服务密钥"
+                }
+            }
+        },
+        "error": {}
+    }
+}
