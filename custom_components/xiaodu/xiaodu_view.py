@@ -19,7 +19,7 @@ class XiaoduView(HomeAssistantView):
         if options.get('debug', False) == True:
             await hass.services.async_call('persistent_notification', 'create', {
                 'title': '接收信息',
-                'message': json.dumps(data)
+                'message': json.dumps(data, indent=2)
             })
         header = data['header']
         payload = data['payload']
@@ -64,6 +64,6 @@ class XiaoduView(HomeAssistantView):
         if options.get('debug', False) == True:
             await hass.services.async_call('persistent_notification', 'create', {
                 'title': '发送信息',
-                'message': json.dumps(response)
+                'message': json.dumps(response, indent=2)
             })
         return self.json(response)
