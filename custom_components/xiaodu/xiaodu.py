@@ -8,14 +8,11 @@ area_entity = {}
 async def discoveryDevice(hass):    
     timestampOfSample = date_now()
     # 获取所有区域
-    area = await area_registry.async_get_registry(hass)
+    area = area_registry.async_get(hass)
     area_list = area.async_list_areas()
     for area_item in area_list:
-        # 获取设备
-        # entity = await device_registry.async_get_registry(hass)
-        # entity_list = device_registry.async_entries_for_area(entity, area_item.id)
         # 获取区域实体
-        entity = await entity_registry.async_get_registry(hass)
+        entity = entity_registry.async_get(hass)
         entity_list = entity_registry.async_entries_for_area(entity, area_item.id)
         for entity_item in entity_list:
             area_entity.update({

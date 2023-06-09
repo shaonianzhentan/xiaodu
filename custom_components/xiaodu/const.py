@@ -1,3 +1,3 @@
 DOMAIN = 'xiaodu'
-PLATFORMS = ['updater']
+PLATFORMS = []
 XIAODU_API = "/api/xiaodu"

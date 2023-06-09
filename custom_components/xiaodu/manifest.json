@@ -1,7 +1,7 @@
 {
     "domain": "xiaodu",
     "name": "\u5C0F\u5EA6\u5C0F\u5EA6",
-    "version": "1.0.2",
+    "version": "2023.6.9",
     "config_flow": true,
     "documentation": "https://github.com/shaonianzhentan/xiaodu",
     "dependencies": [],
